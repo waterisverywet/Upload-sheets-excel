@@ -10,7 +10,7 @@ app = FastAPI()
 
 # Google Sheets API settings
 SCOPES = ["https://www.googleapis.com/auth/spreadsheets.readonly"]
-SERVICE_ACCOUNT_FILE = os.environ.get("SERVICE_ACCOUNT_FILE")  # <-- Use env variable
+SERVICE_ACCOUNT_FILE = os.environ.get("/etc/secrets/SERVICE_ACCOUNT_FILE")  # <-- Use env variable
 
 # Column templates
 template_columns_mp_mh = ['State', 'District', 'Tehsil', 'Mandal', 'Village', 'Village LGD Code']
