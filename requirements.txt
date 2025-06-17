@@ -1,0 +1,7 @@
+fastapi
+uvicorn
+pandas>=0.24.0
+gspread>=3.0.0
+gspread-dataframe
+google-auth
+openpyxl
