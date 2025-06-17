@@ -5,3 +5,4 @@ gspread>=3.0.0
 gspread-dataframe
 google-auth
 openpyxl
+python-multipart
