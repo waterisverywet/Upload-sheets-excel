@@ -4,19 +4,30 @@ import pandas as pd
 import gspread
 from google.oauth2.service_account import Credentials
 from gspread_dataframe import get_as_dataframe
-import os  # <-- Add this import
+import os  # Correct import
 
 app = FastAPI()
 
 # Google Sheets API settings
 SCOPES = ["https://www.googleapis.com/auth/spreadsheets.readonly"]
-import os
-SERVICE_ACCOUNT_FILE = os.environ.get("SERVICE_ACCOUNT_FILE")
- # <-- Use env variable
+SERVICE_ACCOUNT_FILE = os.environ.get("SERVICE_ACCOUNT_FILE")  # Use env variable
 
-# Column templates
-template_columns_mp_mh = ['State', 'District', 'Tehsil', 'Mandal', 'Village', 'Village LGD Code']
-template_columns_ktk = ['State', 'District', 'Tehsil', 'Hobli', 'Village', 'Village LGD Code']
+# FIXED: Remove duplicate columns
+template_columns_mp_mh = [
+    'State', 'District', 'Tehsil', 'Mandal', 'Village', 'Village LGD Code',
+    'id', 'Village Matching Status', 'Survey Matching Status',
+    'State SS initial', 'District SS initial', 'Tehsil SS initial', 'Tehsil ID',
+    'Village SS initial', 'Village LGD Code SS initial', 'Confidence Score',
+    'Soundex Check', 'Survey Number', 'Survey ID', 'Geometry ID'  # Removed duplicates
+]
+
+template_columns_ktk = [
+    'State', 'District', 'Taluk', 'Hobli', 'Village', 'Village LGD Code',
+    'id', 'Village Matching Status', 'Survey Matching Status',
+    'State SS initial', 'District SS initial', 'Taluk SS initial', 'Taluk ID',
+    'Village SS initial', 'Village LGD Code SS initial', 'Confidence Score',
+    'Soundex Check', 'Survey Number', 'Survey ID', 'Geometry ID'  # Removed duplicates
+]
 
 def get_sheet_data_as_df(sheet_url, worksheet_index=0):
     creds = Credentials.from_service_account_file(SERVICE_ACCOUNT_FILE, scopes=SCOPES)
