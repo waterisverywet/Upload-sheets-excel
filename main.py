@@ -4,7 +4,7 @@ import pandas as pd
 import gspread
 from google.oauth2.service_account import Credentials
 from gspread_dataframe import get_as_dataframe
-import os  # Correct import
+import os  # Correct im
 
 app = FastAPI()
 
@@ -14,18 +14,18 @@ SERVICE_ACCOUNT_FILE = os.environ.get("SERVICE_ACCOUNT_FILE")  # Use env variabl
 
 # FIXED: Remove duplicate columns
 template_columns_mp_mh = [
-    'State', 'District', 'Tehsil', 'Mandal', 'Village', 'Village LGD Code',
-    'id', 'Village Matching Status', 'Survey Matching Status',
-    'State SS initial', 'District SS initial', 'Tehsil SS initial', 'Tehsil ID',
-    'Village SS initial', 'Village LGD Code SS initial', 'Confidence Score',
+    'State', 'District', 'Tehsil', 'Mandal', 'Village', 'LGDCODE',
+    'id', 'True/False', 'Survey Matching Status',
+    'State_SS', 'District_SS', 'Tehsil_SS', 'RID',
+    'Village SS initial', 'LGD_code/ Census Code_SS', 'Confidence Score',
     'Soundex Check', 'Survey Number', 'Survey ID', 'Geometry ID'  # Removed duplicates
 ]
 
 template_columns_ktk = [
-    'State', 'District', 'Taluk', 'Hobli', 'Village', 'Village LGD Code',
-    'id', 'Village Matching Status', 'Survey Matching Status',
-    'State SS initial', 'District SS initial', 'Taluk SS initial', 'Taluk ID',
-    'Village SS initial', 'Village LGD Code SS initial', 'Confidence Score',
+    'State', 'District', 'Taluk', 'Hobli', 'Village', 'LGDCODE',
+    'id', 'True/False', 'Survey Matching Status',
+    'State_SS', 'District_SS', 'Taluk_SS', 'RID',
+    'Village SS initial', 'LGD_code/ Census Code_SS', 'Confidence Score',
     'Soundex Check', 'Survey Number', 'Survey ID', 'Geometry ID'  # Removed duplicates
 ]
 
