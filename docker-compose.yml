@@ -1,0 +1,26 @@
+version: '3.8'
+
+services:
+  sheets-excel-api:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: sheets-excel-api
+    ports:
+      - "8000:8000"
+    environment:
+      SERVICE_ACCOUNT_FILE: /app/service-account-key.json
+      PYTHONUNBUFFERED: 1
+      PYTHONDONTWRITEBYTECODE: 1
+    env_file:
+      - .env
+    volumes:
+      - .:/app
+      - /path/to/service-account-key.json:/app/service-account-key.json:ro
+    restart: unless-stopped
+    networks:
+      - app-network
+
+networks:
+  app-network:
+    driver: bridge
