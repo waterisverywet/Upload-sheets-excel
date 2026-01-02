@@ -1,8 +1,23 @@
-fastapi
-uvicorn
+# Web Framework
+fastapi==0.104.1
+uvicorn[standard]==0.24.0
+
+# Data Processing & Spreadsheets
 pandas>=0.24.0
-gspread>=3.0.0
-gspread-dataframe
-google-auth
-openpyxl
-python-multipart
+gspread==3.0.0
+gspread-dataframe==3.0.0
+google-auth>=2.0.0
+google-auth-httplib2>=0.1.0
+google-auth-oauthlib>=0.4.0
+
+# Excel File Processing
+openpyxl>=3.0.0
+
+# Utilities
+python-multipart>=0.0.5
+pytz>=2023.3
+
+# Development (optional)
+pytest==7.4.3
+pytest-asyncio==0.21.1
+requests==2.31.0
